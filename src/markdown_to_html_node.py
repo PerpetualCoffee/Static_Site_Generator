@@ -21,7 +21,7 @@ def block_to_html_node(block: str) -> ParentNode:
     if block_type == BlockType.CODE:
         return code_to_html_node(block)
     if block_type == BlockType.QUOTE:
-        return quote_to_htmlnode(block)
+        return quote_to_html_node(block)
     if block_type == BlockType.UNORDERED_LIST:
         return ulist_to_html_node(block)
     if block_type == BlockType.ORDERED_LIST:
@@ -48,7 +48,7 @@ def heading_to_html_node(block):
 
 def code_to_html_node(block):
     # this one may be special then the rest (see instructions)
-    text = block[3:-3].lstrip("\n")
+    text = block[3:-3].strip("\n")
     raw_text_node = TextNode(text, TextType.TEXT)
     child = text_node_to_html_node(raw_text_node)
     code = ParentNode("code", [child])
